@@ -1,0 +1,1 @@
+CREATE TABLE IF NOT EXISTS Usuario (ID int primary key auto_increment, nombre VARCHAR(50), password VARCHAR(50));
