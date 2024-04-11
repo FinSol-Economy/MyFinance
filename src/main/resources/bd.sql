@@ -1,1 +1,2 @@
-CREATE TABLE IF NOT EXISTS Usuario (ID int primary key auto_increment, nombre VARCHAR(50), password VARCHAR(50));
+CREATE TABLE IF NOT EXISTS Usuario (nombre VARCHAR(50) primary key, password VARCHAR(50));
+CREATE TABLE IF NOT EXISTS Cuenta (ID int primary key auto_increment, nombreUsuario VARCHAR(50), nombreCuenta VARCHAR(50), saldo int);

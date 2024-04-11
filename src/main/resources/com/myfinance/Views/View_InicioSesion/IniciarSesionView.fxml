@@ -1,13 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.myfinance.controllers.IniciarSesionViewController">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.myfinance.controllersView.IniciarSesionViewController">
    <children>
       <Label layoutX="234.0" layoutY="77.0" text="MyFinance">
          <font>
@@ -25,7 +26,7 @@
          </font>
       </Label>
       <TextField id="userName" fx:id="userNameField" layoutX="253.0" layoutY="160.0" />
-      <TextField fx:id="passwordField" layoutX="253.0" layoutY="199.0" />
+      <PasswordField fx:id="passwordField" layoutX="253.0" layoutY="199.0" />
       <Button fx:id="inicioSesionBtn" layoutX="318.0" layoutY="257.0" mnemonicParsing="false" onAction="#clicInicioSesion" text="Iniciar Sesión">
          <font>
             <Font name="Lato Regular" size="12.0" />

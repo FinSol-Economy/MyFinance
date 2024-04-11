@@ -6,6 +6,6 @@ module com.myfinance {
 
     opens com.myfinance to javafx.fxml;
     exports com.myfinance;
-    exports com.myfinance.controllers;
-    opens com.myfinance.controllers to javafx.fxml;
+    exports com.myfinance.controllersView;
+    opens com.myfinance.controllersView to javafx.fxml;
 }

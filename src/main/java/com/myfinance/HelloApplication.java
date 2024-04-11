@@ -1,12 +1,11 @@
 package com.myfinance;
 
-import com.myfinance.controllers.IniciarSesionViewController;
+import com.myfinance.controllersView.generalControllerView;
+import com.myfinance.persistence.BD;
 import javafx.application.Application;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Scene;
 import javafx.stage.Stage;
 
-import java.io.IOException;
+import java.sql.Connection;
 
 public class HelloApplication extends Application {
     public static Stage stage;
@@ -18,14 +17,15 @@ public class HelloApplication extends Application {
     @Override
     public void start(Stage stage) {
         try {
-            System.out.println("GG");
-            FXMLLoader loader = new FXMLLoader(HelloApplication.class.getResource("Views/View_InicioSesion/IniciarSesionView.fxml"));
-            Scene scene = new Scene(loader.load());
-            stage.setTitle("MyFinance");
-            stage.setScene(scene);
-            IniciarSesionViewController controladorIniciarSesion= loader.getController();
-            controladorIniciarSesion.setStage(stage);
-            stage.show();
+            //Conexion Base de Datos
+            BD bd = new BD();
+            bd.Conectar();
+            Connection conn = bd.getConn();
+
+            //Manejador de pantallas
+            generalControllerView controllerView = generalControllerView.getInstance(conn);
+            controllerView.setStage(stage);
+            controllerView.showScreen("View_InicioSesion/IniciarSesionView.fxml", conn);
         }
         catch (Exception e){
             System.out.println("Error");

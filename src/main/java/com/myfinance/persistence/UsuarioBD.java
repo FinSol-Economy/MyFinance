@@ -1,15 +1,18 @@
 package com.myfinance.persistence;
+import com.myfinance.entities.Cuenta;
 import com.myfinance.entities.Usuario;
 
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
 
 public class UsuarioBD {
-    private final BD bd;
-    public UsuarioBD() {
-        this.bd = new BD();
+    private final Connection conn;
+    public UsuarioBD(Connection conn) {
+        this.conn = conn;
     }
 
     public boolean crearUsuario(Usuario user) throws SQLException {
@@ -17,11 +20,9 @@ public class UsuarioBD {
             if (buscarUsuario(user)){
                 return false;
             }
-            this.bd.Conectar();
-            Statement stmt = this.bd.getConn().createStatement();
+            Statement stmt = this.conn.createStatement();
             int code = stmt.executeUpdate("INSERT INTO Usuario (nombre, password) VALUES ('" + user.getNombre() + "', '" + user.getPassword() + "')");
             stmt.close();
-            this.bd.Desconectar();
             if (code == 1) {
                 System.out.println("Se creo el usuario correctamente");
                 return true;
@@ -36,20 +37,36 @@ public class UsuarioBD {
     public boolean buscarUsuario(Usuario user) throws SQLException {
         boolean encontrado = false;
         try  {
-            this.bd.Conectar();
-            Statement stmt = this.bd.getConn().createStatement();
+            Statement stmt = this.conn.createStatement();
             ResultSet rs = stmt.executeQuery("SELECT * FROM Usuario WHERE nombre = '" + user.getNombre() + "' AND password = '" + user.getPassword() + "'");
             if (rs.next()){
                 System.out.println("Usuario encontrado y valido");
                 encontrado = true;
             }
             stmt.close();
-            this.bd.Desconectar();
             return encontrado;
         }catch (SQLException e){
             e.printStackTrace();
             return encontrado;
         }
 
+    }
+
+    public List<Cuenta> getCuentas(Usuario user){
+        List<Cuenta> cuentas = new ArrayList<Cuenta>();
+        try  {
+            Statement stmt = this.conn.createStatement();
+            ResultSet rs = stmt.executeQuery("SELECT * FROM Cuenta WHERE nombreUsuario = '" + user.getNombre()+ "'");
+            while (rs.next()) {
+                String nombreUsuario = rs.getString("nombreUsuario");
+                String nombreCuenta = rs.getString("nombreCuenta");
+                int saldo = rs.getInt("saldo");
+                Cuenta cuenta = new Cuenta(nombreUsuario, nombreCuenta, saldo);
+                cuentas.add(cuenta);
+            }
+        }catch (SQLException e){
+            e.printStackTrace();
+        }
+        return cuentas;
     }
 }
