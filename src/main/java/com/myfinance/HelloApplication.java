@@ -22,7 +22,7 @@ public class HelloApplication extends Application {
             bd.Conectar();
             Connection conn = bd.getConn();
 
-            //Manejador de pantallas
+            //Manejador de pantallas y controladores
             generalControllerView controllerView = generalControllerView.getInstance(conn);
             controllerView.setStage(stage);
             controllerView.showScreen("View_InicioSesion/IniciarSesionView.fxml", conn);
