@@ -58,10 +58,11 @@ public class UsuarioBD {
             Statement stmt = this.conn.createStatement();
             ResultSet rs = stmt.executeQuery("SELECT * FROM Cuenta WHERE nombreUsuario = '" + user.getNombre()+ "'");
             while (rs.next()) {
+                int cuentaID = rs.getInt("cuentaID");
                 String nombreUsuario = rs.getString("nombreUsuario");
                 String nombreCuenta = rs.getString("nombreCuenta");
                 int saldo = rs.getInt("saldo");
-                Cuenta cuenta = new Cuenta(nombreUsuario, nombreCuenta, saldo);
+                Cuenta cuenta = new Cuenta(cuentaID,nombreUsuario, nombreCuenta, saldo);
                 cuentas.add(cuenta);
             }
         }catch (SQLException e){

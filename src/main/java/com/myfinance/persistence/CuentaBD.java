@@ -1,8 +1,12 @@
 package com.myfinance.persistence;
 
 import com.myfinance.entities.Cuenta;
+import com.myfinance.entities.Movimiento;
 
 import java.sql.*;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
 
 public class CuentaBD {
     private final Connection conn;

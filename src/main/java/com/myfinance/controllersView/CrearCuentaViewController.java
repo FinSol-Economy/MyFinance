@@ -31,7 +31,7 @@ public class CrearCuentaViewController implements interfaceControllerView{
         if (cuenta!=null){
             Stage stage = (Stage) btnCrearCuenta.getScene().getWindow();
             stage.close();
-            generalControllerView.getInstance().showScreen("View_Inicio/InicioView.fxml", this.conn, this.usuario, cuenta);
+            generalControllerView.getInstance().showScreen("View_Cuentas/CuentaView.fxml", this.conn, usuario);
         }else{
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setHeaderText("Error al crear cuenta");

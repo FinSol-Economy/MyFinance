@@ -4,14 +4,31 @@ import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
 
 public class Cuenta {
+
+    private int cuentaID;
     private String nombreUsuario;
     private String nombreCuenta;
     private int saldo;
+
+    public Cuenta(int cuentaID, String nombreUsuario, String nombreCuenta, int saldo) {
+        this.cuentaID = cuentaID;
+        this.nombreUsuario = nombreUsuario;
+        this.nombreCuenta = nombreCuenta;
+        this.saldo = saldo;
+    }
 
     public Cuenta(String nombreUsuario, String nombreCuenta, int saldo) {
         this.nombreUsuario = nombreUsuario;
         this.nombreCuenta = nombreCuenta;
         this.saldo = saldo;
+    }
+
+    public int getCuentaID() {
+        return cuentaID;
+    }
+
+    public void setCuentaID(int cuentaID) {
+        this.cuentaID = cuentaID;
     }
 
     public String getNombreUsuario() {
