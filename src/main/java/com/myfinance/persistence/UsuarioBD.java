@@ -21,7 +21,7 @@ public class UsuarioBD {
                 return false;
             }
             Statement stmt = this.conn.createStatement();
-            int code = stmt.executeUpdate("INSERT INTO Usuario (nombre, password) VALUES ('" + user.getNombre() + "', '" + user.getPassword() + "')");
+            int code = stmt.executeUpdate("INSERT INTO Usuarios (nombreUsuario, password) VALUES ('" + user.getNombre() + "', '" + user.getPassword() + "')");
             stmt.close();
             if (code == 1) {
                 System.out.println("Se creo el usuario correctamente");
@@ -38,7 +38,7 @@ public class UsuarioBD {
         boolean encontrado = false;
         try  {
             Statement stmt = this.conn.createStatement();
-            ResultSet rs = stmt.executeQuery("SELECT * FROM Usuario WHERE nombre = '" + user.getNombre() + "' AND password = '" + user.getPassword() + "'");
+            ResultSet rs = stmt.executeQuery("SELECT * FROM Usuarios WHERE nombreUsuario = '" + user.getNombre() + "' AND password = '" + user.getPassword() + "'");
             if (rs.next()){
                 System.out.println("Usuario encontrado y valido");
                 encontrado = true;
@@ -56,12 +56,12 @@ public class UsuarioBD {
         List<Cuenta> cuentas = new ArrayList<Cuenta>();
         try  {
             Statement stmt = this.conn.createStatement();
-            ResultSet rs = stmt.executeQuery("SELECT * FROM Cuenta WHERE nombreUsuario = '" + user.getNombre()+ "'");
+            ResultSet rs = stmt.executeQuery("SELECT * FROM Cuentas WHERE nombreUsuario = '" + user.getNombre()+ "'");
             while (rs.next()) {
                 int cuentaID = rs.getInt("cuentaID");
                 String nombreUsuario = rs.getString("nombreUsuario");
                 String nombreCuenta = rs.getString("nombreCuenta");
-                int saldo = rs.getInt("saldo");
+                double saldo = rs.getDouble("saldo");
                 Cuenta cuenta = new Cuenta(cuentaID,nombreUsuario, nombreCuenta, saldo);
                 cuentas.add(cuenta);
             }

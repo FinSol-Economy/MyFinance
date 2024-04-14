@@ -1,6 +1,11 @@
 package com.myfinance.entities;
 
+import javafx.beans.property.SimpleStringProperty;
+
+import java.text.SimpleDateFormat;
+import java.time.LocalDate;
 import java.util.Date;
+import java.util.SimpleTimeZone;
 
 public class Movimiento {
 
@@ -9,17 +14,27 @@ public class Movimiento {
     private String tipo;
     private String movimientoNombre;
     private String movimientoDesc;
-    private int monto;
-    private Date movimientoFecha;
+    private double monto;
+    private LocalDate movimientoFecha;
     private Date movimientoRegistro;
     private Date fechaPlazo;
     private boolean plazo;
     private String destino;
     private String origen;
 
-    public Movimiento(int cuentaID, int movimientoID, String tipo, String movimientoNombre, String movimientoDesc, int monto, Date movimientoFecha, Date movimientoRegistro) {
+    public Movimiento(int cuentaID, int movimientoID, String tipo, String movimientoNombre, String movimientoDesc, double monto, LocalDate movimientoFecha, Date movimientoRegistro) {
         this.cuentaID = cuentaID;
         this.movimientoID = movimientoID;
+        this.tipo = tipo;
+        this.movimientoNombre = movimientoNombre;
+        this.movimientoDesc = movimientoDesc;
+        this.monto = monto;
+        this.movimientoFecha = movimientoFecha;
+        this.movimientoRegistro = movimientoRegistro;
+    }
+
+    public Movimiento(int cuentaID, String tipo, String movimientoNombre, String movimientoDesc, double monto, LocalDate movimientoFecha, Date movimientoRegistro) {
+        this.cuentaID = cuentaID;
         this.tipo = tipo;
         this.movimientoNombre = movimientoNombre;
         this.movimientoDesc = movimientoDesc;
@@ -68,19 +83,19 @@ public class Movimiento {
         this.tipo = tipo;
     }
 
-    public int getMonto() {
+    public double getMonto() {
         return monto;
     }
 
-    public void setMonto(int monto) {
+    public void setMonto(double monto) {
         this.monto = monto;
     }
 
-    public Date getMovimientoFecha() {
+    public LocalDate getMovimientoFecha() {
         return movimientoFecha;
     }
 
-    public void setMovimientoFecha(Date movimientoFecha) {
+    public void setMovimientoFecha(LocalDate movimientoFecha) {
         this.movimientoFecha = movimientoFecha;
     }
 
@@ -91,4 +106,5 @@ public class Movimiento {
     public void setMovimientoRegistro(Date movimientoRegistro) {
         this.movimientoRegistro = movimientoRegistro;
     }
+
 }

@@ -1,7 +1,8 @@
 package com.myfinance.controllersView;
 
-import com.myfinance.facade.facadeCuenta;
-import com.myfinance.facade.facadeUsuario;
+import com.myfinance.facade.FacadeCuenta;
+import com.myfinance.facade.FacadeMovimiento;
+import com.myfinance.facade.FacadeUsuario;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -54,7 +55,7 @@ public class generalControllerView {
         Object controllerView = loader.getController();
         Object facade = getFacade(controllerView);
         interfaceControllerView IcontrollerView = (interfaceControllerView) controllerView;
-        IcontrollerView.setControlador(facade);
+        IcontrollerView.setFacade(facade);
         IcontrollerView.inicializar(params);
 
         stage.setScene(new Scene(root));
@@ -72,7 +73,7 @@ public class generalControllerView {
         Object controllerView = loader.getController();
         Object facade = getFacade(controllerView);
         interfaceControllerView IcontrollerView = (interfaceControllerView) controllerView;
-        IcontrollerView.setControlador(facade);
+        IcontrollerView.setFacade(facade);
         IcontrollerView.inicializar(params);
 
         Stage stage2 = (new Stage());
@@ -84,15 +85,17 @@ public class generalControllerView {
     }
 
     private static void crearFacades(){
-        facadeUsuario fcdusuario = new facadeUsuario(conn);
-        facadeCuenta fcdcuenta = new facadeCuenta(conn);
+        FacadeUsuario fcdusuario = new FacadeUsuario(conn);
+        FacadeCuenta fcdcuenta = new FacadeCuenta(conn);
+        FacadeMovimiento fcdmovimiento = new FacadeMovimiento(conn);
 
         facades.put(IniciarSesionViewController.class, fcdusuario);
         facades.put(RegistroViewController.class, fcdusuario);
         facades.put(CuentaViewController.class, fcdusuario);
         facades.put(CrearCuentaViewController.class, fcdcuenta);
-        facades.put(InicioViewController.class, fcdcuenta);
-
+        facades.put(InicioViewController.class, fcdmovimiento);
+        facades.put(RegistrarMovimientoViewController.class, fcdmovimiento);
+        facades.put(VerMovimientosViewController.class, null);
     }
 
     private Object getFacade(Object controllerView){

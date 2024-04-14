@@ -4,6 +4,7 @@ import com.myfinance.entities.Cuenta;
 import com.myfinance.entities.Movimiento;
 
 import java.sql.*;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -19,7 +20,7 @@ public class MovimientoBD {
     public boolean crearMovimiento(Movimiento movimiento){
         boolean creado = false;
         try{
-            String insercion = "INSERT INTO Movimientos (cuentaID, movimientoNombre, movimientoDesc, movimientoTipo, movimientoMonto, movimientoFecha, movimientoFechaRegistro) VALUES (?, ?, ?, ?, ?, ?, ?)";
+            String insercion = "INSERT INTO Movimientos (cuentaID, movimientoNombre, movimientoDesc, movimientoTipo, movimientoMonto, movimientoFecha, movimientoRegistro) VALUES (?, ?, ?, ?, ?, ?, ?)";
             PreparedStatement pstmt = this.conn.prepareStatement(insercion);
 
             prepareCrearMovimiento(movimiento, pstmt);
@@ -31,7 +32,7 @@ public class MovimientoBD {
                 creado = true;
             }
         } catch (SQLException e) {
-            throw new RuntimeException(e);
+            e.printStackTrace();
         }
 
         return creado;
@@ -47,12 +48,12 @@ public class MovimientoBD {
 
         pstmt.setString(4, movimiento.getTipo());//Movimiento tipo
 
-        pstmt.setInt(5, movimiento.getMonto());//Movimiento monto
-        java.sql.Timestamp sqlMovimientoFecha = new java.sql.Timestamp(movimiento.getMovimientoFecha().getTime());
+        pstmt.setDouble(5, movimiento.getMonto());//Movimiento monto
 
-        pstmt.setTimestamp(6, sqlMovimientoFecha);//Fecha del movimiento
-        java.sql.Timestamp sqlMovimientoRegistro = new java.sql.Timestamp(movimiento.getMovimientoFecha().getTime());
+        java.sql.Date sqlMovimientoFecha = java.sql.Date.valueOf(movimiento.getMovimientoFecha());
+        pstmt.setDate(6, sqlMovimientoFecha);//Fecha del movimiento
 
+        java.sql.Timestamp sqlMovimientoRegistro = new java.sql.Timestamp(movimiento.getMovimientoRegistro().getTime());
         pstmt.setTimestamp(7, sqlMovimientoRegistro);//Fecha del registro del movimiento
 
     }
@@ -79,11 +80,23 @@ public class MovimientoBD {
         String tipo = rs.getString("movimientoTipo");
         String movimientoNombre = rs.getString("movimientoNombre");
         String movimientoDesc = rs.getString("movimientoDesc");
-        int monto = rs.getInt("movimientoMonto");
-        java.util.Date movimientoFecha = rs.getTimestamp("movimientoFecha");
-        Date movimientoRegistro = rs.getTimestamp("movimientoFechaRegistro");
+        double monto = rs.getDouble("movimientoMonto");
+        LocalDate movimientoFecha = rs.getDate("movimientoFecha").toLocalDate();
+        Date movimientoRegistro = rs.getTimestamp("movimientoRegistro");
 
         return new Movimiento(ID, movimientoID, tipo, movimientoNombre, movimientoDesc, monto, movimientoFecha, movimientoRegistro);
+    }
+
+    public void actualizarSaldo(int cuentaID, double monto, double saldoviejo){
+        try{
+            String update = "UPDATE Cuentas SET saldo = ? WHERE cuentaID = ?";
+            PreparedStatement pstmt = this.conn.prepareStatement(update);
+            pstmt.setDouble(1, saldoviejo+monto);
+            pstmt.setInt(2, cuentaID);
+            pstmt.executeUpdate();
+        }catch (SQLException e){
+            e.printStackTrace();
+        }
     }
 }
 
