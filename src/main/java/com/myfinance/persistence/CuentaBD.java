@@ -1,8 +1,12 @@
 package com.myfinance.persistence;
 
 import com.myfinance.entities.Cuenta;
+import com.myfinance.entities.Movimiento;
 
 import java.sql.*;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
 
 public class CuentaBD {
     private final Connection conn;
@@ -16,7 +20,7 @@ public class CuentaBD {
             if (buscarCuenta(cuenta)){
                 return false;
             }
-            String insercion = "INSERT INTO Cuenta (nombreUsuario, nombreCuenta, saldo) VALUES (?, ?, ?)";
+            String insercion = "INSERT INTO Cuentas (nombreUsuario, nombreCuenta, saldo) VALUES (?, ?, ?)";
             PreparedStatement pstmt = this.conn.prepareStatement(insercion);
 
             pstmt.setString(1, cuenta.getNombreUsuario());
@@ -40,9 +44,10 @@ public class CuentaBD {
         boolean encontrado = false;
         try  {
             Statement stmt = this.conn.createStatement();
-            ResultSet rs = stmt.executeQuery("SELECT * FROM Cuenta WHERE nombreCuenta = '" + cuenta.getNombreCuenta() + "' AND nombreUsuario = '" + cuenta.getNombreUsuario() + "'");
+            ResultSet rs = stmt.executeQuery("SELECT * FROM Cuentas WHERE nombreCuenta = '" + cuenta.getNombreCuenta() + "' AND nombreUsuario = '" + cuenta.getNombreUsuario() + "'");
             if (rs.next()){
                 System.out.println("Cuenta encontrada y valida");
+                cuenta.setCuentaID(rs.getInt("cuentaID"));
                 encontrado = true;
             }
             stmt.close();

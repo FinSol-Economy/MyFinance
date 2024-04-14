@@ -1,7 +1,7 @@
 package com.myfinance.controllersView;
 
 import com.myfinance.entities.Usuario;
-import com.myfinance.facade.facadeUsuario;
+import com.myfinance.facade.FacadeUsuario;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
@@ -14,7 +14,7 @@ import java.sql.SQLException;
 public class RegistroViewController implements interfaceControllerView  {
     private Stage stage;
     private Connection conn;
-    private facadeUsuario facade;
+    private FacadeUsuario facade;
 
     public void setStage(Stage stage) {
         this.stage = stage;
@@ -61,8 +61,8 @@ public class RegistroViewController implements interfaceControllerView  {
     }
 
     @Override
-    public void setControlador(Object controlador) {
-        this.facade = (facadeUsuario) controlador;
+    public void setFacade(Object facade) {
+        this.facade = (FacadeUsuario) facade;
     }
 
     @Override

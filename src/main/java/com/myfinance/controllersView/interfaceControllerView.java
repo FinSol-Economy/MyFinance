@@ -1,6 +1,6 @@
 package com.myfinance.controllersView;
 
 public interface interfaceControllerView {
-    void setControlador(Object controlador);
+    void setFacade(Object facade);
     void inicializar(Object... params);
 }

@@ -1,17 +1,35 @@
 package com.myfinance.entities;
 
+import javafx.beans.property.SimpleDoubleProperty;
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
 
 public class Cuenta {
+
+    private int cuentaID;
     private String nombreUsuario;
     private String nombreCuenta;
-    private int saldo;
+    private double saldo;
 
-    public Cuenta(String nombreUsuario, String nombreCuenta, int saldo) {
+    public Cuenta(int cuentaID, String nombreUsuario, String nombreCuenta, double saldo) {
+        this.cuentaID = cuentaID;
         this.nombreUsuario = nombreUsuario;
         this.nombreCuenta = nombreCuenta;
         this.saldo = saldo;
+    }
+
+    public Cuenta(String nombreUsuario, String nombreCuenta, double saldo) {
+        this.nombreUsuario = nombreUsuario;
+        this.nombreCuenta = nombreCuenta;
+        this.saldo = saldo;
+    }
+
+    public int getCuentaID() {
+        return cuentaID;
+    }
+
+    public void setCuentaID(int cuentaID) {
+        this.cuentaID = cuentaID;
     }
 
     public String getNombreUsuario() {
@@ -30,11 +48,11 @@ public class Cuenta {
         this.nombreCuenta = nombreCuenta;
     }
 
-    public int getSaldo() {
+    public double getSaldo() {
         return saldo;
     }
 
-    public void setSaldo(int saldo) {
+    public void setSaldo(double saldo) {
         this.saldo = saldo;
     }
 
@@ -42,7 +60,7 @@ public class Cuenta {
         return new SimpleStringProperty(this.nombreCuenta);
     }
 
-    public SimpleIntegerProperty getPropertySaldo(){
-        return new SimpleIntegerProperty(this.saldo);
+    public SimpleDoubleProperty getPropertySaldo(){
+        return new SimpleDoubleProperty(this.saldo);
     }
 }

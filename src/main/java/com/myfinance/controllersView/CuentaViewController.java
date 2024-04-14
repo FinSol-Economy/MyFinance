@@ -2,14 +2,9 @@ package com.myfinance.controllersView;
 
 import com.myfinance.entities.Cuenta;
 import com.myfinance.entities.Usuario;
-import com.myfinance.facade.facadeUsuario;
+import com.myfinance.facade.FacadeUsuario;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.*;
-import javafx.stage.Modality;
-import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.sql.Connection;
@@ -20,7 +15,7 @@ public class CuentaViewController implements interfaceControllerView{
     private Connection conn;
     private Usuario usuario;
     private List<Cuenta> cuentas;
-    private facadeUsuario facade;
+    private FacadeUsuario facade;
     @FXML
     public Label txtuserName;
     @FXML
@@ -35,12 +30,12 @@ public class CuentaViewController implements interfaceControllerView{
     @FXML
     public TableColumn<Cuenta, String> columnNombreCuenta;
     @FXML
-    public TableColumn<Cuenta, Integer> columnSaldo;
+    public TableColumn<Cuenta, Double> columnSaldo;
 
 
     @Override
-    public void setControlador(Object controlador) {
-        this.facade = (facadeUsuario) controlador;
+    public void setFacade(Object facade) {
+        this.facade = (FacadeUsuario) facade;
     }
 
     @Override
@@ -77,19 +72,6 @@ public class CuentaViewController implements interfaceControllerView{
     @FXML
     protected void onActionCrearCuenta() throws IOException {
         generalControllerView.getInstance().showSecundaryScreen("View_Cuentas/CrearCuentaView.fxml", "Crear Cuenta", this.conn, this.usuario);
-        /*
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/myfinance/Views/View_Cuentas/CrearCuentaView.fxml"));
-        Parent root = loader.load();
-        Object controller = loader.getController();
-        interfaceControllerView controllerView = (interfaceControllerView) controller;
-        controllerView.inicializar(this.conn, this.usuario);
-        Stage stage = new Stage();
-        stage.initModality(Modality.APPLICATION_MODAL); // Bloquear la ventana anterior
-        stage.setTitle("Crear Cuenta");
-        stage.setScene(new Scene(root));
-        stage.showAndWait();
-
-         */
     }
 
     @FXML

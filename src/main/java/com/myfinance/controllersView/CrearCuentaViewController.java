@@ -2,8 +2,7 @@ package com.myfinance.controllersView;
 
 import com.myfinance.entities.Cuenta;
 import com.myfinance.entities.Usuario;
-import com.myfinance.facade.facadeCuenta;
-import com.myfinance.persistence.CuentaBD;
+import com.myfinance.facade.FacadeCuenta;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
@@ -16,7 +15,7 @@ import java.sql.Connection;
 public class CrearCuentaViewController implements interfaceControllerView{
     private Connection conn;
     private Usuario usuario;
-    private facadeCuenta facade;
+    private FacadeCuenta facade;
     @FXML
     public TextField txtFieldNombreCuenta;
     @FXML
@@ -31,7 +30,7 @@ public class CrearCuentaViewController implements interfaceControllerView{
         if (cuenta!=null){
             Stage stage = (Stage) btnCrearCuenta.getScene().getWindow();
             stage.close();
-            generalControllerView.getInstance().showScreen("View_Inicio/InicioView.fxml", this.conn, this.usuario, cuenta);
+            generalControllerView.getInstance().showScreen("View_Cuentas/CuentaView.fxml", this.conn, usuario);
         }else{
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setHeaderText("Error al crear cuenta");
@@ -46,8 +45,8 @@ public class CrearCuentaViewController implements interfaceControllerView{
     }
 
     @Override
-    public void setControlador(Object controlador) {
-        this.facade = (facadeCuenta) controlador;
+    public void setFacade(Object facade) {
+        this.facade = (FacadeCuenta) facade;
     }
 
     @Override

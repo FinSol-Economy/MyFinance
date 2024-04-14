@@ -1,8 +1,8 @@
 package com.myfinance.controllersView;
 
-import com.myfinance.business.UsuarioDAO;
-import com.myfinance.facade.facadeCuenta;
-import com.myfinance.facade.facadeUsuario;
+import com.myfinance.facade.FacadeCuenta;
+import com.myfinance.facade.FacadeMovimiento;
+import com.myfinance.facade.FacadeUsuario;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -22,7 +22,7 @@ public class generalControllerView {
     private static Image icono;
     private static Connection conn;
 
-    private static Map<Class<?>, Object> controladores;
+    private static Map<Class<?>, Object> facades;
 
     private generalControllerView() {}
 
@@ -36,8 +36,8 @@ public class generalControllerView {
             //Icono para las ventanas
             icono = new Image(generalControllerView.class.getResourceAsStream("/com/myfinance/Images/FinSol.png"));
             conn = connec;
-            controladores = new HashMap<>();
-            crearControladores();
+            facades = new HashMap<>();
+            crearFacades();
         }
 
         return instance;
@@ -53,9 +53,9 @@ public class generalControllerView {
 
 
         Object controllerView = loader.getController();
-        Object controlador = getControlador(controllerView);
+        Object facade = getFacade(controllerView);
         interfaceControllerView IcontrollerView = (interfaceControllerView) controllerView;
-        IcontrollerView.setControlador(controlador);
+        IcontrollerView.setFacade(facade);
         IcontrollerView.inicializar(params);
 
         stage.setScene(new Scene(root));
@@ -71,9 +71,9 @@ public class generalControllerView {
 
 
         Object controllerView = loader.getController();
-        Object controlador = getControlador(controllerView);
+        Object facade = getFacade(controllerView);
         interfaceControllerView IcontrollerView = (interfaceControllerView) controllerView;
-        IcontrollerView.setControlador(controlador);
+        IcontrollerView.setFacade(facade);
         IcontrollerView.inicializar(params);
 
         Stage stage2 = (new Stage());
@@ -84,28 +84,21 @@ public class generalControllerView {
         stage2.showAndWait();
     }
 
-    private static void crearControladores(){
-        controladores.put(facadeUsuario.class, new facadeUsuario(conn));
-        controladores.put(facadeCuenta.class, new facadeCuenta(conn));
+    private static void crearFacades(){
+        FacadeUsuario fcdusuario = new FacadeUsuario(conn);
+        FacadeCuenta fcdcuenta = new FacadeCuenta(conn);
+        FacadeMovimiento fcdmovimiento = new FacadeMovimiento(conn);
 
+        facades.put(IniciarSesionViewController.class, fcdusuario);
+        facades.put(RegistroViewController.class, fcdusuario);
+        facades.put(CuentaViewController.class, fcdusuario);
+        facades.put(CrearCuentaViewController.class, fcdcuenta);
+        facades.put(InicioViewController.class, fcdmovimiento);
+        facades.put(RegistrarMovimientoViewController.class, fcdmovimiento);
+        facades.put(VerMovimientosViewController.class, null);
     }
 
-    private Object getControlador(Object controller){
-        if (controller instanceof IniciarSesionViewController){
-            return controladores.get(facadeUsuario.class);
-        }
-        else if (controller instanceof RegistroViewController){
-            return controladores.get(facadeUsuario.class);
-        }
-        else if (controller instanceof CuentaViewController){
-            return controladores.get(facadeUsuario.class);
-        }
-        else if (controller instanceof CrearCuentaViewController){
-            return controladores.get(facadeCuenta.class);
-        }
-        else if (controller instanceof InicioViewController){
-            return controladores.get(facadeCuenta.class);
-        }
-        return null;
+    private Object getFacade(Object controllerView){
+        return facades.get(controllerView.getClass());
     }
 }

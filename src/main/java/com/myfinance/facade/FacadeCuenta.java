@@ -2,15 +2,14 @@ package com.myfinance.facade;
 
 import com.myfinance.entities.Cuenta;
 import com.myfinance.persistence.CuentaBD;
-import com.myfinance.persistence.UsuarioBD;
 
 import java.sql.Connection;
 
-public class facadeCuenta {
+public class FacadeCuenta {
     private Connection conn;
     private CuentaBD cuentabd;
 
-    public facadeCuenta(Connection conn) {
+    public FacadeCuenta(Connection conn) {
         this.conn = conn;
         cuentabd = new CuentaBD(conn);
     }

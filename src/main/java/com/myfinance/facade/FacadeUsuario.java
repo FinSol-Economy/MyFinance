@@ -8,11 +8,11 @@ import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.List;
 
-public class facadeUsuario {
+public class FacadeUsuario {
     private Connection conn;
     private UsuarioBD userbd;
 
-    public facadeUsuario(Connection conn) {
+    public FacadeUsuario(Connection conn) {
         this.conn = conn;
         userbd = new UsuarioBD(conn);
     }
