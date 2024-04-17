@@ -14,7 +14,7 @@ import java.sql.Connection;
 import java.sql.SQLException;
 
 
-public class IniciarSesionViewController implements interfaceControllerView {
+public class IniciarSesionViewController implements InterfaceControllerView {
     private Stage stage;
     private Connection conn;
     private FacadeUsuario facade;
@@ -42,7 +42,7 @@ public class IniciarSesionViewController implements interfaceControllerView {
         String password = passwordField.getText();
         Usuario usuario = this.facade.buscarUsuario(userName, password);
         if (usuario!=null){
-            generalControllerView.getInstance().showScreen("View_Cuentas/CuentaView.fxml", this.conn, usuario);
+            GeneralControllerView.getInstance().showScreen("View_Cuentas/CuentaView.fxml", this.conn, usuario);
         }else{
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setHeaderText("Usuario Incorrecto");
@@ -55,7 +55,7 @@ public class IniciarSesionViewController implements interfaceControllerView {
     @FXML
     protected void clicRegistro() {
         try{
-            generalControllerView.getInstance().showScreen("View_InicioSesion/RegistroView.fxml", this.conn);
+            GeneralControllerView.getInstance().showScreen("View_InicioSesion/RegistroView.fxml", this.conn);
         } catch (Exception e) {
             e.printStackTrace();
         }

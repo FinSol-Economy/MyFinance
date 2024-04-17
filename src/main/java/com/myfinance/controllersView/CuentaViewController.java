@@ -10,7 +10,7 @@ import java.io.IOException;
 import java.sql.Connection;
 import java.util.List;
 
-public class CuentaViewController implements interfaceControllerView{
+public class CuentaViewController implements InterfaceControllerView {
 
     private Connection conn;
     private Usuario usuario;
@@ -59,7 +59,7 @@ public class CuentaViewController implements interfaceControllerView{
     protected void onActionContinuar() throws IOException {
         Cuenta seleccionada = tableCuentas.selectionModelProperty().get().getSelectedItem();
         if (seleccionada!=null){
-            generalControllerView.getInstance().showScreen("View_Inicio/InicioView.fxml", this.conn, this.usuario, seleccionada);
+            GeneralControllerView.getInstance().showScreen("View_Inicio/InicioView.fxml", this.conn, this.usuario, seleccionada);
         }else{
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setHeaderText("Cuenta no seleccionada");
@@ -71,13 +71,13 @@ public class CuentaViewController implements interfaceControllerView{
 
     @FXML
     protected void onActionCrearCuenta() throws IOException {
-        generalControllerView.getInstance().showSecundaryScreen("View_Cuentas/CrearCuentaView.fxml", "Crear Cuenta", this.conn, this.usuario);
+        GeneralControllerView.getInstance().showSecundaryScreen("View_Cuentas/CrearCuentaView.fxml", "Crear Cuenta", this.conn, this.usuario);
     }
 
     @FXML
     protected void onActionIniciarSesion() {
         try{
-            generalControllerView.getInstance().showScreen("View_InicioSesion/IniciarSesionView.fxml", this.conn);
+            GeneralControllerView.getInstance().showScreen("View_InicioSesion/IniciarSesionView.fxml", this.conn);
         } catch (Exception e) {
             e.printStackTrace();
         }

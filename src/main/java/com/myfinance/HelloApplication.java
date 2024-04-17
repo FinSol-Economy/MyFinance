@@ -1,6 +1,6 @@
 package com.myfinance;
 
-import com.myfinance.controllersView.generalControllerView;
+import com.myfinance.controllersView.GeneralControllerView;
 import com.myfinance.persistence.BD;
 import javafx.application.Application;
 import javafx.stage.Stage;
@@ -23,7 +23,7 @@ public class HelloApplication extends Application {
             Connection conn = bd.getConn();
 
             //Manejador de pantallas y controladores
-            generalControllerView controllerView = generalControllerView.getInstance(conn);
+            GeneralControllerView controllerView = GeneralControllerView.getInstance(conn);
             controllerView.setStage(stage);
             controllerView.showScreen("View_InicioSesion/IniciarSesionView.fxml", conn);
         }

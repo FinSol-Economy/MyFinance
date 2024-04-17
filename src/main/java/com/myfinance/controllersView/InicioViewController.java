@@ -3,22 +3,19 @@ package com.myfinance.controllersView;
 import com.myfinance.entities.Cuenta;
 import com.myfinance.entities.Movimiento;
 import com.myfinance.entities.Usuario;
-import com.myfinance.facade.FacadeCuenta;
 import com.myfinance.facade.FacadeMovimiento;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.util.Callback;
 
 import java.io.IOException;
 import java.sql.Connection;
 import java.time.LocalDate;
 import java.util.List;
-import java.util.Objects;
 
-public class InicioViewController implements interfaceControllerView{
+public class InicioViewController implements InterfaceControllerView {
     private Connection conn;
     private Usuario usuario;
     private Cuenta cuenta;
@@ -50,7 +47,7 @@ public class InicioViewController implements interfaceControllerView{
 
 
     public void onActionCerrarSesion() throws IOException {
-        generalControllerView.getInstance().showScreen("View_InicioSesion/IniciarSesionView.fxml", this.conn);
+        GeneralControllerView.getInstance().showScreen("View_InicioSesion/IniciarSesionView.fxml", this.conn);
     }
 
     @Override
@@ -80,15 +77,15 @@ public class InicioViewController implements interfaceControllerView{
     }
 
     public void onActionElegirOtraCuenta() throws IOException {
-        generalControllerView.getInstance().showScreen("View_Cuentas/CuentaView.fxml", this.conn, this.usuario);
+        GeneralControllerView.getInstance().showScreen("View_Cuentas/CuentaView.fxml", this.conn, this.usuario);
     }
 
     public void onActionRegistrarMovimiento() throws IOException {
-        generalControllerView.getInstance().showSecundaryScreen("View_Movimiento/RegistrarMovimientoView.fxml", "Registrar Movimiento", this.conn, this.usuario, this.cuenta);
+        GeneralControllerView.getInstance().showSecundaryScreen("View_Movimiento/RegistrarMovimientoView.fxml", "Registrar Movimiento", this.conn, this.usuario, this.cuenta);
     }
 
     public void onActionVerMovimientos() throws IOException {
-        generalControllerView.getInstance().showSecundaryScreen("View_Movimiento/VerMovimientosView.fxml", "Movimientos", this.movimientos);
+        GeneralControllerView.getInstance().showSecundaryScreen("View_Movimiento/VerMovimientosView.fxml", "Movimientos", this.movimientos);
     }
 
     private void inicializarLista(List<Movimiento> movimientos){

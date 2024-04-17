@@ -4,7 +4,6 @@ package com.myfinance.controllersView;
 import com.myfinance.entities.Cuenta;
 import com.myfinance.entities.Usuario;
 import com.myfinance.facade.FacadeMovimiento;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.stage.Stage;
@@ -13,10 +12,9 @@ import java.sql.Connection;
 import java.sql.Timestamp;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
-import java.util.Date;
 import java.util.Objects;
 
-public class RegistrarMovimientoViewController implements interfaceControllerView{
+public class RegistrarMovimientoViewController implements InterfaceControllerView {
 
     private FacadeMovimiento facade;
     private Cuenta cuenta;
@@ -46,7 +44,7 @@ public class RegistrarMovimientoViewController implements interfaceControllerVie
                 alert.setHeaderText("Movimiento Creado");
                 alert.show();
                 onActionVolver();
-                generalControllerView.getInstance().showScreen("View_Inicio/InicioView.fxml", this.conn, this.usuario, this.cuenta);
+                GeneralControllerView.getInstance().showScreen("View_Inicio/InicioView.fxml", this.conn, this.usuario, this.cuenta);
             }
         }catch(Exception e){
             mostrarError(errorCuerpo);

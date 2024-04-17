@@ -11,7 +11,7 @@ import javafx.stage.Stage;
 import java.sql.Connection;
 import java.sql.SQLException;
 
-public class RegistroViewController implements interfaceControllerView  {
+public class RegistroViewController implements InterfaceControllerView {
     private Stage stage;
     private Connection conn;
     private FacadeUsuario facade;
@@ -54,7 +54,7 @@ public class RegistroViewController implements interfaceControllerView  {
     @FXML
     protected void clicIniciarSesion() {
         try{
-            generalControllerView.getInstance().showScreen("View_InicioSesion/IniciarSesionView.fxml", this.conn);
+            GeneralControllerView.getInstance().showScreen("View_InicioSesion/IniciarSesionView.fxml", this.conn);
         } catch (Exception e) {
             e.printStackTrace();
         }

@@ -12,7 +12,7 @@ import javafx.stage.Stage;
 import java.io.IOException;
 import java.sql.Connection;
 
-public class CrearCuentaViewController implements interfaceControllerView{
+public class CrearCuentaViewController implements InterfaceControllerView {
     private Connection conn;
     private Usuario usuario;
     private FacadeCuenta facade;
@@ -30,7 +30,7 @@ public class CrearCuentaViewController implements interfaceControllerView{
         if (cuenta!=null){
             Stage stage = (Stage) btnCrearCuenta.getScene().getWindow();
             stage.close();
-            generalControllerView.getInstance().showScreen("View_Cuentas/CuentaView.fxml", this.conn, usuario);
+            GeneralControllerView.getInstance().showScreen("View_Cuentas/CuentaView.fxml", this.conn, usuario);
         }else{
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setHeaderText("Error al crear cuenta");

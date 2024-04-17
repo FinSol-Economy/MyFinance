@@ -15,26 +15,26 @@ import java.sql.Connection;
 import java.util.HashMap;
 import java.util.Map;
 
-public class generalControllerView {
+public class GeneralControllerView {
 
-    private static generalControllerView instance;
+    private static GeneralControllerView instance;
     private Stage stage;
     private static Image icono;
     private static Connection conn;
 
     private static Map<Class<?>, Object> facades;
 
-    private generalControllerView() {}
+    private GeneralControllerView() {}
 
-    public static generalControllerView getInstance() {
+    public static GeneralControllerView getInstance() {
         return instance;
     }
 
-    public static generalControllerView getInstance(Connection connec) {
+    public static GeneralControllerView getInstance(Connection connec) {
         if (instance == null) {
-            instance = new generalControllerView();
+            instance = new GeneralControllerView();
             //Icono para las ventanas
-            icono = new Image(generalControllerView.class.getResourceAsStream("/com/myfinance/Images/FinSol.png"));
+            icono = new Image(GeneralControllerView.class.getResourceAsStream("/com/myfinance/Images/FinSol.png"));
             conn = connec;
             facades = new HashMap<>();
             crearFacades();
@@ -54,7 +54,7 @@ public class generalControllerView {
 
         Object controllerView = loader.getController();
         Object facade = getFacade(controllerView);
-        interfaceControllerView IcontrollerView = (interfaceControllerView) controllerView;
+        InterfaceControllerView IcontrollerView = (InterfaceControllerView) controllerView;
         IcontrollerView.setFacade(facade);
         IcontrollerView.inicializar(params);
 
@@ -72,7 +72,7 @@ public class generalControllerView {
 
         Object controllerView = loader.getController();
         Object facade = getFacade(controllerView);
-        interfaceControllerView IcontrollerView = (interfaceControllerView) controllerView;
+        InterfaceControllerView IcontrollerView = (InterfaceControllerView) controllerView;
         IcontrollerView.setFacade(facade);
         IcontrollerView.inicializar(params);
 
