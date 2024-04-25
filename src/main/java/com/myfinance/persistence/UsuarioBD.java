@@ -17,9 +17,6 @@ public class UsuarioBD {
 
     public boolean crearUsuario(Usuario user) throws SQLException {
         try  {
-            if (buscarUsuario(user)){
-                return false;
-            }
             Statement stmt = this.conn.createStatement();
             int code = stmt.executeUpdate("INSERT INTO Usuarios (nombreUsuario, password) VALUES ('" + user.getNombre() + "', '" + user.getPassword() + "')");
             stmt.close();

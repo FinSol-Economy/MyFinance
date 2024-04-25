@@ -17,11 +17,19 @@ public class FacadeUsuario {
         userbd = new UsuarioBD(conn);
     }
 
-    public Usuario crearUsuario(String nombre, String password) throws SQLException {
+    public Usuario crearUsuario(String nombre, String password) {
         Usuario usuario = new Usuario(nombre, password);
-        if (!this.userbd.crearUsuario(usuario)){
+        try{
+            if (this.userbd.buscarUsuario(usuario)){
+                usuario = null;
+            }
+            else if (!this.userbd.crearUsuario(usuario)){
+                usuario = null;
+            }
+        }catch (SQLException _){
             usuario = null;
         }
+
         return usuario;
     }
 
