@@ -26,7 +26,7 @@ public class FacadeUsuario {
             else if (!this.userbd.crearUsuario(usuario)){
                 usuario = null;
             }
-        }catch (SQLException _){
+        }catch (SQLException e){
             usuario = null;
         }
 
