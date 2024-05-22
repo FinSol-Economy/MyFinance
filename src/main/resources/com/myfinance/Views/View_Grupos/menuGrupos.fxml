@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.myfinance.controllersView.menuGruposViewController">
+   <children>
+      <ComboBox fx:id="CBgrupos" layoutX="209.0" layoutY="85.0" onAction="#seleccionarGrupo" onShowing="#listarGrupos" prefWidth="150.0" />
+      <Button fx:id="btnCrearGrup" layoutX="94.0" layoutY="187.0" mnemonicParsing="false" onAction="#crearGrupo" text="Crear grupo" />
+      <Button fx:id="btnVolver" layoutX="209.0" layoutY="187.0" mnemonicParsing="false" onAction="#volverMenu" text="Volver" />
+      <ListView fx:id="ListIntegrantes" layoutX="394.0" layoutY="69.0" prefHeight="143.0" prefWidth="150.0" />
+      <ComboBox fx:id="CBnuevoInt" layoutX="66.0" layoutY="272.0" onAction="#seleccionarIntegrante" onShowing="#mostrarUsuarios" prefWidth="150.0" />
+      <Button fx:id="btnAñadirInt" layoutX="89.0" layoutY="321.0" mnemonicParsing="false" onAction="#añadirIntegrante" text="Añadir integrante" />
+      <Button fx:id="btnagregarMov" layoutX="248.0" layoutY="347.0" mnemonicParsing="false" onAction="#agregarMovimiento" text="Agregar movimiento" />
+      <ListView fx:id="listaDeMovimientos" layoutX="394.0" layoutY="229.0" prefHeight="143.0" prefWidth="150.0" />
+      <Label fx:id="balanceCuenta" layoutX="89.0" layoutY="89.0" />
+   </children>
+</AnchorPane>

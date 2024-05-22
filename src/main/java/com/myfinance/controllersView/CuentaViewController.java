@@ -3,6 +3,7 @@ package com.myfinance.controllersView;
 import com.myfinance.entities.Cuenta;
 import com.myfinance.entities.Usuario;
 import com.myfinance.facade.FacadeUsuario;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 
@@ -12,6 +13,7 @@ import java.util.List;
 
 public class CuentaViewController implements InterfaceControllerView {
 
+    public Button btnGrupos;
     private Connection conn;
     private Usuario usuario;
     private List<Cuenta> cuentas;
@@ -83,4 +85,7 @@ public class CuentaViewController implements InterfaceControllerView {
         }
     }
 
+    public void seccionGrupos(ActionEvent actionEvent) throws IOException {
+        GeneralControllerView.getInstance().showScreen("View_Grupos/menuGrupos.fxml", this.conn, this.usuario);
+    }
 }

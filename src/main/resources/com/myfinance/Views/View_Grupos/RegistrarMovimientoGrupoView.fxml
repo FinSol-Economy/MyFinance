@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="418.0" prefWidth="422.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.myfinance.controllersView.RegistrarMovimientoGrupoViewController">
+   <children>
+      <MenuButton fx:id="optionTipo" layoutX="173.0" layoutY="328.0" mnemonicParsing="false" text="Tipo">
+        <items>
+          <MenuItem mnemonicParsing="false" onAction="#onActionSelectIngreso" text="Ingreso" />
+          <MenuItem mnemonicParsing="false" onAction="#onActionSelectEgreso" text="Egreso" />
+        </items>
+      </MenuButton>
+      <Label layoutX="125.0" layoutY="29.0" text="Registrar Movimiento">
+         <font>
+            <Font name="Lato Regular" size="18.0" />
+         </font>
+      </Label>
+      <Label layoutX="100.0" layoutY="77.0" text="Nombre:">
+         <font>
+            <Font name="Lato Regular" size="15.0" />
+         </font>
+      </Label>
+      <TextField fx:id="txtFieldNombre" layoutX="172.0" layoutY="74.0" />
+      <Label layoutX="109.0" layoutY="112.0" text="Monto:">
+         <font>
+            <Font name="Lato Regular" size="15.0" />
+         </font>
+      </Label>
+      <TextField fx:id="txtFieldMonto" layoutX="173.0" layoutY="109.0" />
+      <Label layoutX="114.0" layoutY="150.0" text="Fecha:">
+         <font>
+            <Font name="Lato Regular" size="15.0" />
+         </font>
+      </Label>
+      <DatePicker fx:id="datePickerFecha" layoutX="173.0" layoutY="147.0" />
+      <Label layoutX="73.0" layoutY="189.0" text="Descripción:">
+         <font>
+            <Font name="Lato Regular" size="15.0" />
+         </font>
+      </Label>
+      <TextArea fx:id="txtAreaDesc" layoutX="172.0" layoutY="189.0" prefHeight="125.0" prefWidth="174.0" />
+      <Button fx:id="btnRegistrar" layoutX="282.0" layoutY="328.0" mnemonicParsing="false" onAction="#onActionRegistrar" text="Registrar" />
+      <Button fx:id="btnVolver" layoutX="347.0" layoutY="379.0" mnemonicParsing="false" onAction="#onActionVolver" text="Volver" />
+      <ComboBox fx:id="CBCuenta" layoutX="14.0" layoutY="328.0" onAction="#seleccionarCuenta" onShowing="#listarCuentas" prefWidth="150.0" promptText="Cuenta" />
+   </children>
+</Pane>
