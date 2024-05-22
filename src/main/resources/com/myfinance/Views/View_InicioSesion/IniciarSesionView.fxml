@@ -1,37 +1,50 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.TextField?>
-<?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.myfinance.controllersView.IniciarSesionViewController">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.myfinance.controllersView.IniciarSesionViewController">
    <children>
-      <Label layoutX="234.0" layoutY="77.0" text="MyFinance">
+      <Label layoutX="330.0" layoutY="56.0" text="MyFinance">
          <font>
-            <Font name="Lato Regular" size="27.0" />
+            <Font name="System Bold" size="27.0" />
          </font>
       </Label>
-      <Label layoutX="86.0" layoutY="161.0" text="Nombre de usuario:">
-         <font>
-            <Font name="Lato Regular" size="18.0" />
-         </font>
-      </Label>
-      <Label layoutX="146.0" layoutY="200.0" text="Contraseña:">
+      <Label layoutX="300.0" layoutY="121.0" text="Usuario">
          <font>
             <Font name="Lato Regular" size="18.0" />
          </font>
       </Label>
-      <TextField id="userName" fx:id="userNameField" layoutX="253.0" layoutY="160.0" />
-      <PasswordField fx:id="passwordField" layoutX="253.0" layoutY="199.0" />
-      <Button fx:id="inicioSesionBtn" layoutX="318.0" layoutY="257.0" mnemonicParsing="false" onAction="#clicInicioSesion" text="Iniciar Sesión">
+      <Label layoutX="300.0" layoutY="187.0" text="Contraseña">
+         <font>
+            <Font name="Lato Regular" size="18.0" />
+         </font>
+      </Label>
+      <TextField id="userName" fx:id="userNameField" layoutX="301.0" layoutY="154.0" prefHeight="25.0" prefWidth="241.0" style="-fx-background-color: D9D9D9;" />
+      <PasswordField fx:id="passwordField" layoutX="300.0" layoutY="221.0" prefHeight="25.0" prefWidth="241.0" style="-fx-background-color: D9D9D9;">
+         <font>
+            <Font name="System Italic" size="12.0" />
+         </font></PasswordField>
+      <Button fx:id="inicioSesionBtn" layoutX="421.0" layoutY="289.0" mnemonicParsing="false" onAction="#clicInicioSesion" prefHeight="47.0" prefWidth="114.0" style="-fx-padding: 10 20; -fx-background-radius: 8; -fx-border-color: transparent; -fx-border-radius: 8;" text="Iniciar Sesión">
          <font>
             <Font name="Lato Regular" size="12.0" />
          </font>
       </Button>
-      <Button fx:id="registroBtn" layoutX="164.0" layoutY="257.0" mnemonicParsing="false" onAction="#clicRegistro" text="Registrar Usuario" />
+      <Button fx:id="registroBtn" layoutX="256.0" layoutY="289.0" mnemonicParsing="false" onAction="#clicRegistro" prefHeight="47.0" prefWidth="114.0" style="-fx-padding: 10 20; -fx-background-radius: 8; -fx-border-color: transparent; -fx-border-radius: 8;" text="Registrar Usuario" />
+      <Pane layoutY="-3.0" prefHeight="406.0" prefWidth="234.0" style="-fx-background-color: B2F593;">
+         <children>
+            <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="46.0" layoutY="115.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../Images/FinSol.png" />
+               </image>
+            </ImageView>
+         </children>
+      </Pane>
    </children>
 </Pane>

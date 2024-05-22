@@ -1,28 +1,51 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="396.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.myfinance.controllersView.VerMovimientosViewController">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="402.0" prefWidth="461.0" style="-fx-background-color: #E4FCDA;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.myfinance.controllersView.VerMovimientosViewController">
    <children>
-      <Label layoutX="124.0" layoutY="33.0" text="Movimientos">
+      <Label layoutX="153.0" layoutY="35.0" text="Movimientos">
          <font>
-            <Font name="Lato Regular" size="25.0" />
+            <Font name="System Bold" size="25.0" />
          </font>
       </Label>
-      <Button fx:id="btnVolver" layoutX="323.0" layoutY="353.0" mnemonicParsing="false" onAction="#onActionVolver" text="Volver" />
-      <Button fx:id="btnVerMovimiento" layoutX="198.0" layoutY="353.0" mnemonicParsing="false" onAction="#onActionVerMovimiento" text="Ver Movimiento" />
-      <TableView fx:id="tableMovimientos" layoutX="24.0" layoutY="87.0" prefHeight="252.0" prefWidth="349.0">
+      <Button fx:id="btnVolver" layoutX="282.0" layoutY="353.0" mnemonicParsing="false" onAction="#onActionVolver" style="-fx-border-color: transparent; -fx-border-radius: 8; -fx-background-radius: 8;" text="Volver">
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+         <effect>
+            <DropShadow blurType="ONE_PASS_BOX" />
+         </effect></Button>
+      <Button fx:id="btnVerMovimiento" layoutX="102.0" layoutY="353.0" mnemonicParsing="false" onAction="#onActionVerMovimiento" style="-fx-background-radius: 8; -fx-border-radius: 8; -fx-border-color: transparent;" text="Ver Movimiento">
+         <effect>
+            <DropShadow blurType="ONE_PASS_BOX" />
+         </effect>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor></Button>
+      <TableView fx:id="tableMovimientos" layoutX="24.0" layoutY="87.0" prefHeight="247.0" prefWidth="421.0">
          <columns>
             <TableColumn fx:id="columnNombreMovimiento" prefWidth="146.0" text="Nombre" />
             <TableColumn fx:id="columnFechaMovimiento" prefWidth="99.0" text="Fecha" />
             <TableColumn fx:id="columnMovimientoMonto" prefWidth="103.0" text="Monto" />
          </columns>
+         <effect>
+            <DropShadow />
+         </effect>
       </TableView>
+      <ImageView fitHeight="64.0" fitWidth="73.0" layoutX="24.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../Images/FinSol.png" />
+         </image>
+      </ImageView>
    </children>
 </Pane>
