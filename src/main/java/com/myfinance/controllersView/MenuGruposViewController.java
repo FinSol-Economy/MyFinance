@@ -115,8 +115,15 @@ public class MenuGruposViewController implements InterfaceControllerView{
     }
 
     public void agregarMovimiento(ActionEvent actionEvent) throws IOException {
-        GeneralControllerView.getInstance().showSecundaryScreen("View_Grupos/RegistrarMovimientoGrupoView.fxml", "Registrar movimiento grupo",this.conn, this.usuario, this.grupo);
-        this.balanceCuenta.setText(String.valueOf(this.grupo.getBalance()));
+        if (this.grupo == null){
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setHeaderText("Grupo no seleccionado");
+            alert.setContentText("Seleccione un grupo antes de ingresar un movimiento");
+            alert.showAndWait();
+        }else{
+            GeneralControllerView.getInstance().showSecundaryScreen("View_Grupos/RegistrarMovimientoGrupoView.fxml", "Registrar movimiento grupo",this.conn, this.usuario, this.grupo);
+            this.balanceCuenta.setText(String.valueOf(this.grupo.getBalance()));
+        }
     }
 
     private void showUsers(){
