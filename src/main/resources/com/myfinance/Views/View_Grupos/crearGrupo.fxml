@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="231.0" prefWidth="457.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.myfinance.controllersView.CrearGrupoViewController">
+   <children>
+      <TextField fx:id="nombreGrupo" layoutX="239.0" layoutY="68.0" />
+      <Button fx:id="btnvolver" layoutX="161.0" layoutY="150.0" mnemonicParsing="false" onAction="#volverMenuGrupo" text="Volver" />
+      <Button fx:id="btnCrearGrupo" layoutX="280.0" layoutY="150.0" mnemonicParsing="false" onAction="#guardarGrupo" text="Crear grupo" />
+   </children>
+</Pane>

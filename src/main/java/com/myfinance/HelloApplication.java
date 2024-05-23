@@ -21,7 +21,6 @@ public class HelloApplication extends Application {
             BD bd = new BD();
             bd.Conectar();
             Connection conn = bd.getConn();
-
             //Manejador de pantallas y controladores
             GeneralControllerView controllerView = GeneralControllerView.getInstance(conn);
             controllerView.setStage(stage);
