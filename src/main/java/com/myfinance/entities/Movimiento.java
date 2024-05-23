@@ -21,6 +21,7 @@ public class Movimiento {
     private boolean plazo;
     private String destino;
     private String origen;
+    private int grupoID;
 
     public Movimiento(int cuentaID, int movimientoID, String tipo, String movimientoNombre, String movimientoDesc, double monto, LocalDate movimientoFecha, Date movimientoRegistro) {
         this.cuentaID = cuentaID;
@@ -41,6 +42,28 @@ public class Movimiento {
         this.monto = monto;
         this.movimientoFecha = movimientoFecha;
         this.movimientoRegistro = movimientoRegistro;
+    }
+    public Movimiento(int cuentaID, int movimientoID, String tipo, String movimientoNombre, String movimientoDesc, double monto, LocalDate movimientoFecha, Date movimientoRegistro, int grupoID) {
+        this.cuentaID = cuentaID;
+        this.movimientoID = movimientoID;
+        this.tipo = tipo;
+        this.movimientoNombre = movimientoNombre;
+        this.movimientoDesc = movimientoDesc;
+        this.monto = monto;
+        this.movimientoFecha = movimientoFecha;
+        this.movimientoRegistro = movimientoRegistro;
+        this.grupoID = grupoID;
+    }
+
+    public Movimiento(int cuentaID, String tipo, String movimientoNombre, String movimientoDesc, double monto, LocalDate movimientoFecha, Date movimientoRegistro, int grupoID) {
+        this.cuentaID = cuentaID;
+        this.tipo = tipo;
+        this.movimientoNombre = movimientoNombre;
+        this.movimientoDesc = movimientoDesc;
+        this.monto = monto;
+        this.movimientoFecha = movimientoFecha;
+        this.movimientoRegistro = movimientoRegistro;
+        this.grupoID = grupoID;
     }
 
     public int getMovimientoID() {

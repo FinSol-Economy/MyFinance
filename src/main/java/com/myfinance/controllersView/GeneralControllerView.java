@@ -1,6 +1,7 @@
 package com.myfinance.controllersView;
 
 import com.myfinance.facade.FacadeCuenta;
+import com.myfinance.facade.FacadeGrupo;
 import com.myfinance.facade.FacadeMovimiento;
 import com.myfinance.facade.FacadeUsuario;
 import javafx.fxml.FXMLLoader;
@@ -88,6 +89,7 @@ public class GeneralControllerView {
         FacadeUsuario fcdusuario = new FacadeUsuario(conn);
         FacadeCuenta fcdcuenta = new FacadeCuenta(conn);
         FacadeMovimiento fcdmovimiento = new FacadeMovimiento(conn);
+        FacadeGrupo fcdGrupo = new FacadeGrupo(conn);
 
         facades.put(IniciarSesionViewController.class, fcdusuario);
         facades.put(RegistroViewController.class, fcdusuario);
@@ -96,6 +98,9 @@ public class GeneralControllerView {
         facades.put(InicioViewController.class, fcdmovimiento);
         facades.put(RegistrarMovimientoViewController.class, fcdmovimiento);
         facades.put(VerMovimientosViewController.class, null);
+        facades.put(MenuGruposViewController.class, fcdGrupo);
+        facades.put(CrearGrupoViewController.class, fcdGrupo);
+        facades.put(RegistrarMovimientoGrupoViewController.class, fcdGrupo);
     }
 
     private Object getFacade(Object controllerView){

@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="447.0" prefWidth="670.0" style="-fx-background-color: #E4FCDA;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.myfinance.controllersView.MenuGruposViewController">
+   <children>
+      <ComboBox fx:id="CBgrupos" layoutX="102.0" layoutY="147.0" onAction="#seleccionarGrupo" onShowing="#listarGrupos" prefHeight="25.0" prefWidth="287.0" promptText="Elige un grupo" style="-fx-background-radius: 8; -fx-border-color: transparent; -fx-border-radius: 8;">
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+         <effect>
+            <DropShadow blurType="ONE_PASS_BOX" />
+         </effect></ComboBox>
+      <Button fx:id="btnCrearGrup" layoutX="100.0" layoutY="192.0" mnemonicParsing="false" onAction="#crearGrupo" style="-fx-background-radius: 8; -fx-border-color: transparent; -fx-border-radius: 8;" text="Crear grupo">
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+         <effect>
+            <DropShadow blurType="ONE_PASS_BOX" />
+         </effect></Button>
+      <Button fx:id="btnVolver" layoutX="32.0" layoutY="387.0" mnemonicParsing="false" onAction="#volverMenu" style="-fx-padding: 10 20; -fx-background-radius: 8; -fx-border-color: transparent; -fx-border-radius: 8;" text="Volver">
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+         <effect>
+            <DropShadow blurType="ONE_PASS_BOX" />
+         </effect></Button>
+      <ListView fx:id="ListIntegrantes" layoutX="443.0" layoutY="61.0" prefHeight="143.0" prefWidth="184.0" style="-fx-background-color: D9D9D9;">
+         <effect>
+            <DropShadow blurType="ONE_PASS_BOX" />
+         </effect></ListView>
+      <ComboBox fx:id="CBnuevoInt" layoutX="102.0" layoutY="261.0" onAction="#seleccionarIntegrante" onShowing="#mostrarUsuarios" prefHeight="17.0" prefWidth="287.0" promptText="Elige un nuevo integrante" style="-fx-background-radius: 8; -fx-border-color: transparent; -fx-border-radius: 8;">
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+         <effect>
+            <DropShadow blurType="ONE_PASS_BOX" />
+         </effect></ComboBox>
+      <Button fx:id="btnAñadirInt" layoutX="100.0" layoutY="302.0" mnemonicParsing="false" onAction="#añadirIntegrante" style="-fx-background-radius: 8; -fx-border-color: transparent; -fx-border-radius: 8;" text="Añadir integrante">
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+         <effect>
+            <DropShadow blurType="ONE_PASS_BOX" />
+         </effect></Button>
+      <Button fx:id="btnagregarMov" layoutX="460.0" layoutY="394.0" mnemonicParsing="false" onAction="#agregarMovimiento" style="-fx-padding: 10 20; -fx-background-radius: 8; -fx-border-color: transparent; -fx-border-radius: 8;" text="Agregar movimiento">
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+         <effect>
+            <DropShadow blurType="ONE_PASS_BOX" />
+         </effect></Button>
+      <ListView fx:id="listaDeMovimientos" layoutX="443.0" layoutY="244.0" prefHeight="143.0" prefWidth="184.0" style="-fx-background-color: D9D9D9;">
+         <effect>
+            <DropShadow blurType="ONE_PASS_BOX" />
+         </effect></ListView>
+      <Label fx:id="balanceCuenta" layoutX="259.0" layoutY="63.0" prefHeight="17.0" prefWidth="69.0" style="-fx-background-color: D9D9D9;" />
+      <Label layoutX="118.0" layoutY="61.0" text="Saldo del grupo">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font>
+      </Label>
+      <Label layoutX="497.0" layoutY="40.0" text="Integrantes">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font>
+      </Label>
+      <Label layoutX="492.0" layoutY="224.0" text="Movimientos">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font>
+      </Label>
+      <ImageView fitHeight="72.0" fitWidth="69.0" layoutX="14.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../Images/FinSol.png" />
+         </image>
+      </ImageView>
+      <Label layoutX="118.0" layoutY="14.0" text="Grupos">
+         <font>
+            <Font name="System Bold" size="25.0" />
+         </font>
+      </Label>
+      <Label layoutX="108.0" layoutY="112.0" text="Gestion de grupos">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font>
+      </Label>
+      <Label layoutX="100.0" layoutY="234.0" prefHeight="20.0" prefWidth="194.0" text="Incorporación de Integrantes">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>

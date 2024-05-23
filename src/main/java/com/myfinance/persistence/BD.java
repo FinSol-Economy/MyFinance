@@ -1,9 +1,10 @@
 package com.myfinance.persistence;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.SQLException;
-import java.sql.Statement;
+import com.myfinance.entities.Grupo;
+
+import java.sql.*;
+import java.util.ArrayList;
+import java.util.List;
 
 public class BD {
     private final String user;
