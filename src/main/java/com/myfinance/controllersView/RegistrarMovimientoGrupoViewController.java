@@ -67,7 +67,7 @@ public class RegistrarMovimientoGrupoViewController implements InterfaceControll
             for (Cuenta c : this.facade.getCuentas(this.usuario)) {
                 cuentas.add(c);
             }
-            this.CBCuenta.getItems().addAll(cuentas);
+            this.CBCuenta.getItems().setAll(cuentas);
             this.CBCuenta.setConverter(new StringConverter<Cuenta>() {
                 @Override
                 public String toString(Cuenta cuenta) {
@@ -114,7 +114,7 @@ public class RegistrarMovimientoGrupoViewController implements InterfaceControll
             }
             else {
                 Double saldoViejoCuenta = this.cuenta.getSaldo();
-                creado = this.facadeMovimiento.crearMovimiento(this.cuenta.getCuentaID(), this.movimientoTipo, movimientoNombre, movimientoDesc, -monto, fecha, registro, saldoViejoCuenta);
+                creado = this.facadeMovimiento.crearMovimiento(this.cuenta.getCuentaID(), this.movimientoTipo, movimientoNombre, movimientoDesc, monto, fecha, registro, saldoViejoCuenta);
                 Double saldoViejo = this.grupo.getBalance();
                 creado = this.facade.crearMovimiento(this.movimientoTipo, movimientoNombre, movimientoDesc, monto, fecha, registro, saldoViejo, this.grupo.getGrupoId());
                 this.grupo.setBalance(saldoViejo+monto);
@@ -125,8 +125,7 @@ public class RegistrarMovimientoGrupoViewController implements InterfaceControll
     }
 
     private boolean verificarMovimiento(String movimientoNombre, Double monto){
-        boolean valido = true;
-        if (!verificarNombreMovimiento(movimientoNombre)){valido=false;}
+        boolean valido = verificarNombreMovimiento(movimientoNombre);
         if (!verificarMonto(monto)){valido=false;}
         if (!verificarTipo()){valido=false;}
         return valido;
@@ -178,7 +177,7 @@ public class RegistrarMovimientoGrupoViewController implements InterfaceControll
                 alert.setHeaderText("Movimiento Creado");
                 alert.show();
                 onActionVolver();
-                GeneralControllerView.getInstance().showScreen("View_Grupos/menuGruposViewController.fxml", this.conn, this.usuario);
+                GeneralControllerView.getInstance().showScreen("View_Grupos/menuGrupos.fxml", this.conn, this.usuario);
             }
         }catch(Exception e){
             mostrarError(errorCuerpo);

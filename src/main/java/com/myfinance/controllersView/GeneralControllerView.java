@@ -98,7 +98,7 @@ public class GeneralControllerView {
         facades.put(InicioViewController.class, fcdmovimiento);
         facades.put(RegistrarMovimientoViewController.class, fcdmovimiento);
         facades.put(VerMovimientosViewController.class, null);
-        facades.put(menuGruposViewController.class, fcdGrupo);
+        facades.put(MenuGruposViewController.class, fcdGrupo);
         facades.put(CrearGrupoViewController.class, fcdGrupo);
         facades.put(RegistrarMovimientoGrupoViewController.class, fcdGrupo);
     }

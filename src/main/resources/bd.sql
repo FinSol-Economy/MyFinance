@@ -6,6 +6,12 @@ CREATE TABLE IF NOT EXISTS Cuentas (
     saldo DECIMAL(12, 2) NOT NULL,
     FOREIGN KEY (nombreUsuario) REFERENCES Usuarios(nombreUsuario)
     );
+CREATE TABLE IF NOT EXISTS Grupos (
+    idGrupo int primary key auto_increment,
+    nombreGrupo VARCHAR(50) NOT NULL,
+    balance DECIMAL(12, 2) NOT NULL,
+    creador VARCHAR(50) NOT NULL
+    );
 CREATE TABLE IF NOT EXISTS Movimientos (
     movimientoID int primary key auto_increment,
     cuentaID int,
@@ -19,13 +25,6 @@ CREATE TABLE IF NOT EXISTS Movimientos (
     FOREIGN KEY (cuentaID) REFERENCES Cuentas(cuentaID),
     FOREIGN KEY (grupoID) REFERENCES Grupos(idGrupo)
     );
-CREATE TABLE IF NOT EXISTS Grupos (
-    idGrupo int primary key auto_increment,
-    nombreGrupo VARCHAR(50) NOT NULL,
-    balance DECIMAL(12, 2) NOT NULL,
-    creador VARCHAR(50) NOT NULL
-
-);
 CREATE TABLE IF NOT EXISTS UsuariosGrupos (
     idGrupo int NOT NULL,
     nombreUsuario VARCHAR(50) NOT NULL,
